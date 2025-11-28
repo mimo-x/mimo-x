@@ -120,9 +120,9 @@
 
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center gap-8">
-                <a href="#home" class="text-sm font-medium text-white hover:text-conductor-accent transition-colors">Overview</a>
-                <a href="#projects" class="text-sm font-medium text-conductor-muted hover:text-white transition-colors">Projects</a>
-                <a href="#about" class="text-sm font-medium text-conductor-muted hover:text-white transition-colors">About</a>
+                <a href="#home" class="text-sm font-medium text-white hover:text-conductor-accent transition-colors" data-key="nav_overview">概览</a>
+                <a href="#projects" class="text-sm font-medium text-conductor-muted hover:text-white transition-colors" data-key="nav_projects">项目</a>
+                <a href="#about" class="text-sm font-medium text-conductor-muted hover:text-white transition-colors" data-key="nav_about">关于</a>
                 
                 <div class="w-px h-4 bg-conductor-border"></div>
                 
@@ -132,23 +132,33 @@
                 </a>
                 <div class="flex items-center gap-2 px-3 py-1 bg-conductor-border/30 rounded-full border border-conductor-border/50">
                     <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                    <span class="text-[10px] font-mono-code text-conductor-muted uppercase tracking-wider">Building</span>
+                    <span class="text-[10px] font-mono-code text-conductor-muted uppercase tracking-wider" data-key="nav_status">构建中</span>
                 </div>
+
+                <!-- Language Switcher -->
+                <button id="lang-toggle" class="ml-4 text-xs font-mono-code text-conductor-muted hover:text-white border border-conductor-border rounded px-2 py-1 transition-colors">
+                    中 / En
+                </button>
             </nav>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-conductor-muted hover:text-white transition-colors">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
+            <!-- Mobile Actions -->
+            <div class="flex items-center gap-4 md:hidden">
+                <button id="lang-toggle-mobile" class="text-xs font-mono-code text-conductor-muted hover:text-white border border-conductor-border rounded px-2 py-1 transition-colors">
+                    中 / En
+                </button>
+                <button id="mobile-menu-btn" class="text-conductor-muted hover:text-white transition-colors">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-conductor-bg z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col pt-24 px-6">
         <nav class="flex flex-col gap-6 text-xl font-mono-code font-medium">
-            <a href="#home" class="mobile-link text-white border-b border-conductor-border pb-4">Overview</a>
-            <a href="#projects" class="mobile-link text-conductor-muted hover:text-white border-b border-conductor-border pb-4">Projects</a>
-            <a href="#about" class="mobile-link text-conductor-muted hover:text-white border-b border-conductor-border pb-4">About</a>
+            <a href="#home" class="mobile-link text-white border-b border-conductor-border pb-4" data-key="nav_overview">概览</a>
+            <a href="#projects" class="mobile-link text-conductor-muted hover:text-white border-b border-conductor-border pb-4" data-key="nav_projects">项目</a>
+            <a href="#about" class="mobile-link text-conductor-muted hover:text-white border-b border-conductor-border pb-4" data-key="nav_about">关于</a>
             <a href="https://github.com/mimo-x" class="mobile-link text-conductor-muted hover:text-white flex items-center gap-2">
                 <i data-lucide="github" class="w-5 h-5"></i> GitHub
             </a>
@@ -170,11 +180,11 @@
                 <div class="flex flex-col md:items-start items-center gap-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-conductor-card border border-conductor-border w-fit animate-fade-in opacity-0" style="animation-delay: 0.1s;">
                         <span class="text-xs font-mono-code text-conductor-accent">●</span>
-                        <span class="text-xs font-mono-code text-conductor-muted uppercase tracking-wider">Software Engineer</span>
+                        <span class="text-xs font-mono-code text-conductor-muted uppercase tracking-wider" data-key="hero_role">软件工程师</span>
                     </div>
                     
                     <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white animate-slide-up opacity-0" style="animation-delay: 0.2s;">
-                        Hello, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Xin Xu</span>.
+                        Hello, <span data-key="hero_im">我是</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Xin Xu</span>.
                     </h1>
                     
                     <div class="h-20 md:h-16 w-full max-w-2xl">
@@ -183,10 +193,10 @@
 
                     <div class="flex flex-wrap gap-4 mt-4 animate-slide-up opacity-0 justify-center md:justify-start" style="animation-delay: 0.4s;">
                         <a href="#projects" class="px-6 py-3 bg-conductor-accent hover:bg-conductor-accentHover text-white text-sm font-medium rounded-md transition-all shadow-lg shadow-purple-900/30 flex items-center gap-2">
-                            <i data-lucide="code-2" class="w-4 h-4"></i> View Projects
+                            <i data-lucide="code-2" class="w-4 h-4"></i> <span data-key="btn_view_projects">查看项目</span>
                         </a>
                         <a href="https://github.com/mimo-x" target="_blank" class="px-6 py-3 bg-conductor-card border border-conductor-border hover:border-conductor-muted text-conductor-text text-sm font-medium rounded-md transition-all flex items-center gap-2">
-                            <i data-lucide="github" class="w-4 h-4"></i> GitHub Profile
+                            <i data-lucide="github" class="w-4 h-4"></i> <span data-key="btn_github_profile">GitHub 主页</span>
                         </a>
                     </div>
                 </div>
@@ -196,17 +206,17 @@
                     <!-- Widget 1 -->
                     <div class="bg-conductor-card border border-conductor-border rounded-lg p-5 hover:border-conductor-muted/50 transition-colors group text-left">
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-mono-code text-conductor-muted uppercase">Focus Area</span>
+                            <span class="text-xs font-mono-code text-conductor-muted uppercase" data-key="widget_focus">关注领域</span>
                             <i data-lucide="cpu" class="w-4 h-4 text-conductor-accent opacity-70 group-hover:opacity-100 transition-opacity"></i>
                         </div>
-                        <div class="text-lg font-semibold text-white">AI & LLM Tools</div>
-                        <p class="text-sm text-conductor-muted mt-1">Building intelligent workflows</p>
+                        <div class="text-lg font-semibold text-white" data-key="widget_focus_title">AI & LLM 工具</div>
+                        <p class="text-sm text-conductor-muted mt-1" data-key="widget_focus_desc">构建智能工作流</p>
                     </div>
                     
                     <!-- Widget 2 -->
                     <div class="bg-conductor-card border border-conductor-border rounded-lg p-5 hover:border-conductor-muted/50 transition-colors group text-left">
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-mono-code text-conductor-muted uppercase">Tech Stack</span>
+                            <span class="text-xs font-mono-code text-conductor-muted uppercase" data-key="widget_stack">技术栈</span>
                             <i data-lucide="layers" class="w-4 h-4 text-conductor-accent opacity-70 group-hover:opacity-100 transition-opacity"></i>
                         </div>
                         <div class="flex flex-wrap gap-2 mt-2">
@@ -219,11 +229,11 @@
                     <!-- Widget 3 -->
                     <div class="bg-conductor-card border border-conductor-border rounded-lg p-5 hover:border-conductor-muted/50 transition-colors group text-left">
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-mono-code text-conductor-muted uppercase">Contributions</span>
+                            <span class="text-xs font-mono-code text-conductor-muted uppercase" data-key="widget_contrib">开源贡献</span>
                             <i data-lucide="git-commit-horizontal" class="w-4 h-4 text-conductor-accent opacity-70 group-hover:opacity-100 transition-opacity"></i>
                         </div>
-                        <div class="text-lg font-semibold text-white">Open Source</div>
-                        <p class="text-sm text-conductor-muted mt-1">Active GitHub Contributor</p>
+                        <div class="text-lg font-semibold text-white" data-key="widget_contrib_title">开源建设</div>
+                        <p class="text-sm text-conductor-muted mt-1" data-key="widget_contrib_desc">活跃的 GitHub 贡献者</p>
                     </div>
                 </div>
             </section>
@@ -233,10 +243,10 @@
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="text-2xl font-bold text-white flex items-center gap-3">
                         <i data-lucide="folder-open" class="text-conductor-accent"></i>
-                        Pinned Repositories
+                        <span data-key="section_projects">精选仓库</span>
                     </h2>
                     <a href="https://github.com/mimo-x?tab=repositories" target="_blank" class="text-xs font-mono-code text-conductor-accent hover:text-white transition-colors">
-                        View All ->
+                        <span data-key="link_view_all">查看全部 -></span>
                     </a>
                 </div>
 
@@ -250,8 +260,8 @@
                             <i data-lucide="book-check" class="w-5 h-5 text-conductor-accent"></i>
                             <h3 class="font-bold text-white group-hover:text-conductor-accent transition-colors">Code-Review-GPT-Gitlab</h3>
                         </div>
-                        <p class="text-sm text-conductor-muted mb-6 leading-relaxed">
-                            🤖 GPT-powered Code Review tool for Gitlab. Integrates LLMs like Deepseek to automate code analysis and feedback loops.
+                        <p class="text-sm text-conductor-muted mb-6 leading-relaxed" data-key="project_desc_1">
+                            🤖 适用于 Gitlab 的 GPT 代码审查工具。集成 Deepseek 等 LLM 以自动化代码分析和反馈循环。
                         </p>
                         <div class="flex items-center justify-between mt-auto">
                             <div class="flex items-center gap-4 text-xs font-mono-code text-gray-400">
@@ -274,8 +284,8 @@
                             <i data-lucide="cpu" class="w-5 h-5 text-conductor-accent"></i>
                             <h3 class="font-bold text-white group-hover:text-conductor-accent transition-colors">os-workbench-2022</h3>
                         </div>
-                        <p class="text-sm text-conductor-muted mb-6 leading-relaxed">
-                            Operating System experiments and implementations. A deep dive into kernel mechanics and system architecture.
+                        <p class="text-sm text-conductor-muted mb-6 leading-relaxed" data-key="project_desc_2">
+                            操作系统实验与实现。深入探索内核机制与系统架构。
                         </p>
                         <div class="flex items-center justify-between mt-auto">
                             <div class="flex items-center gap-4 text-xs font-mono-code text-gray-400">
@@ -298,8 +308,8 @@
                             <i data-lucide="database" class="w-5 h-5 text-conductor-accent"></i>
                             <h3 class="font-bold text-white group-hover:text-conductor-accent transition-colors">xin</h3>
                         </div>
-                        <p class="text-sm text-conductor-muted mb-6 leading-relaxed">
-                            Personal Knowledge Base and experimental repository. A central hub for documentation, learnings, and snippets.
+                        <p class="text-sm text-conductor-muted mb-6 leading-relaxed" data-key="project_desc_3">
+                            个人知识库与实验仓库。文档、学习心得与代码片段的中心枢纽。
                         </p>
                         <div class="flex items-center justify-between mt-auto">
                             <div class="flex items-center gap-4 text-xs font-mono-code text-gray-400">
@@ -315,16 +325,16 @@
              <!-- About Section -->
              <section id="about" class="animate-slide-up opacity-0" style="animation-delay: 0.7s;">
                 <div class="bg-conductor-card/50 border border-conductor-border rounded-lg p-8 backdrop-blur-sm">
-                    <h2 class="text-xl font-bold text-white mb-4">About Me</h2>
+                    <h2 class="text-xl font-bold text-white mb-4" data-key="section_about">关于我</h2>
                     <div class="font-mono-code text-sm text-conductor-muted space-y-4">
-                        <p>
-                            > I am a passionate developer focused on <span class="text-conductor-accent">AI Integration</span> and <span class="text-conductor-accent">System Architecture</span>.
+                        <p data-key="about_p1">
+                            > 我是一名热衷于 <span class="text-conductor-accent">AI 集成</span> 和 <span class="text-conductor-accent">系统架构</span> 的开发者。
                         </p>
-                        <p>
-                            > Currently exploring the intersection of LLMs and software engineering workflows. My work involves creating tools that enhance developer productivity, such as automating code reviews with GPT models.
+                        <p data-key="about_p2">
+                            > 目前正在探索 LLM 与软件工程工作流的结合。我的工作包括创建提升开发者生产力的工具，例如利用 GPT 模型自动化代码审查。
                         </p>
-                        <p>
-                            > Based in the cloud, pushing commits to GitHub.
+                        <p data-key="about_p3">
+                            > 驻扎云端，持续向 GitHub 提交代码。
                         </p>
                     </div>
                 </div>
@@ -355,23 +365,128 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Typewriter Effect
-        const textToType = "Building intelligent tools for the next generation of software.";
-        const typewriterElement = document.getElementById('typewriter');
-        let i = 0;
-
-        function typeWriter() {
-            if (i < textToType.length) {
-                typewriterElement.innerHTML += textToType.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50); 
+        // --- Translations ---
+        const translations = {
+            en: {
+                nav_overview: "Overview",
+                nav_projects: "Projects",
+                nav_about: "About",
+                nav_status: "Building",
+                hero_role: "Software Engineer",
+                hero_im: "I'm", // "Hello, " stays fixed
+                typewriter_text: "Building intelligent tools for the next generation of software.",
+                btn_view_projects: "View Projects",
+                btn_github_profile: "GitHub Profile",
+                widget_focus: "Focus Area",
+                widget_focus_title: "AI & LLM Tools",
+                widget_focus_desc: "Building intelligent workflows",
+                widget_stack: "Tech Stack",
+                widget_contrib: "Contributions",
+                widget_contrib_title: "Open Source",
+                widget_contrib_desc: "Active GitHub Contributor",
+                section_projects: "Pinned Repositories",
+                link_view_all: "View All ->",
+                project_desc_1: "🤖 GPT-powered Code Review tool for Gitlab. Integrates LLMs like Deepseek to automate code analysis and feedback loops.",
+                project_desc_2: "Operating System experiments and implementations. A deep dive into kernel mechanics and system architecture.",
+                project_desc_3: "Personal Knowledge Base and experimental repository. A central hub for documentation, learnings, and snippets.",
+                section_about: "About Me",
+                about_p1: '> I am a passionate developer focused on <span class="text-conductor-accent">AI Integration</span> and <span class="text-conductor-accent">System Architecture</span>.',
+                about_p2: '> Currently exploring the intersection of LLMs and software engineering workflows. My work involves creating tools that enhance developer productivity, such as automating code reviews with GPT models.',
+                about_p3: '> Based in the cloud, pushing commits to GitHub.'
+            },
+            zh: {
+                nav_overview: "概览",
+                nav_projects: "项目",
+                nav_about: "关于",
+                nav_status: "构建中",
+                hero_role: "软件工程师",
+                hero_im: "我是",
+                typewriter_text: "为下一代软件构建智能工具。",
+                btn_view_projects: "查看项目",
+                btn_github_profile: "GitHub 主页",
+                widget_focus: "关注领域",
+                widget_focus_title: "AI & LLM 工具",
+                widget_focus_desc: "构建智能工作流",
+                widget_stack: "技术栈",
+                widget_contrib: "开源贡献",
+                widget_contrib_title: "开源建设",
+                widget_contrib_desc: "活跃的 GitHub 贡献者",
+                section_projects: "精选仓库",
+                link_view_all: "查看全部 ->",
+                project_desc_1: "🤖 适用于 Gitlab 的 GPT 代码审查工具。集成 Deepseek 等 LLM 以自动化代码分析和反馈循环。",
+                project_desc_2: "操作系统实验与实现。深入探索内核机制与系统架构。",
+                project_desc_3: "个人知识库与实验仓库。文档、学习心得与代码片段的中心枢纽。",
+                section_about: "关于我",
+                about_p1: '> 我是一名热衷于 <span class="text-conductor-accent">AI 集成</span> 和 <span class="text-conductor-accent">系统架构</span> 的开发者。',
+                about_p2: '> 目前正在探索 LLM 与软件工程工作流的结合。我的工作包括创建提升开发者生产力的工具，例如利用 GPT 模型自动化代码审查。',
+                about_p3: '> 驻扎云端，持续向 GitHub 提交代码。'
             }
+        };
+
+        // Current Language State (Default ZH)
+        let currentLang = 'zh';
+        
+        // --- Typewriter Logic ---
+        const typewriterElement = document.getElementById('typewriter');
+        let typewriterTimeout;
+        let typewriterIndex = 0;
+
+        function startTypewriter(text) {
+            clearTimeout(typewriterTimeout);
+            typewriterElement.innerHTML = "";
+            typewriterIndex = 0;
+            
+            function type() {
+                if (typewriterIndex < text.length) {
+                    typewriterElement.innerHTML += text.charAt(typewriterIndex);
+                    typewriterIndex++;
+                    typewriterTimeout = setTimeout(type, 50);
+                }
+            }
+            type();
         }
 
-        // Start typing after initial fade-in
-        setTimeout(typeWriter, 1000);
+        // --- Update Content ---
+        function updateContent(lang) {
+            const data = translations[lang];
+            
+            // Update all elements with data-key
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (data[key]) {
+                    // Check if content has HTML tags (like spans in about section)
+                    if (data[key].includes('<')) {
+                        el.innerHTML = data[key];
+                    } else {
+                        el.textContent = data[key];
+                    }
+                }
+            });
 
-        // Mobile Menu Toggle
+            // Restart Typewriter
+            startTypewriter(data.typewriter_text);
+
+            // Update Lang Button Text
+            const btnText = lang === 'zh' ? '中 / En' : 'En / 中';
+            document.getElementById('lang-toggle').textContent = btnText;
+            document.getElementById('lang-toggle-mobile').textContent = btnText;
+        }
+
+        // --- Event Listeners ---
+        function toggleLanguage() {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            updateContent(currentLang);
+        }
+
+        document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+        document.getElementById('lang-toggle-mobile').addEventListener('click', toggleLanguage);
+
+        // --- Init ---
+        // Start with default language (ZH) logic immediately
+        startTypewriter(translations['zh'].typewriter_text);
+
+
+        // Mobile Menu Toggle (Existing Logic)
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -385,7 +500,6 @@
             }
         });
 
-        // Close mobile menu on link click
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('translate-x-full');
